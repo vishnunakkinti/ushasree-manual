@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>UshaSree Technologies</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    .item-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: center;
+    }
+    .item-card {
+      width: 200px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      overflow: hidden;
+      background-color: white;
+      text-align: center;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+    .item-card img {
+      width: 100%;
+      height: 140px;
+      object-fit: cover;
+    }
+    .item-card p {
+      font-weight: bold;
+      margin: 10px 0;
+    }
+    .item-card button {
+      background-color: #007BFF;
+      color: white;
+      border: none;
+      padding: 10px;
+      width: 100%;
+      cursor: pointer;
+    }
+    .item-card button:hover {
+      background-color: #0056b3;
+    }
+  </style>
+</head>
+<body class="tech-page">
+  <header class="subpage-header">
+    <h1>UshaSree Technologies</h1>
+    <p>Innovative IT & Cloud Solutions</p>
+  </header>
+
+  <main>
+    <section class="content">
+      <h2>Our Courses</h2>
+      <div class="item-grid">
+        <div class="item-card">
+          <img src="images/linux.jpg" alt="Linux">
+          <p>Linux</p>
+          <div class="price">₹500</div>
+          <button onclick="openEnrollForm('Linux')">Enroll Now</button>
+        </div>
+
+        <div class="item-card">
+          <img src="images/azure.jpg" alt="Microsoft Azure">
+          <p>Microsoft Azure</p>
+          <div class="price">₹14,999</div>
+          <button onclick="openEnrollForm('Microsoft Azure')">Enroll Now</button>
+        </div>
+
+        <div class="item-card">
+          <img src="images/aws.jpg" alt="Amazon Web Services">
+          <p>Amazon Web Services</p>
+          <div class="price">₹14,999</div>
+          <button onclick="openEnrollForm('Amazon Web Services')">Enroll Now</button>
+        </div>
+
+        <div class="item-card">
+          <img src="images/kubernetes.jpg" alt="Kubernetes">
+          <p>Kubernetes</p>
+          <div class="price">₹4,999</div>
+          <button onclick="openEnrollForm('Kubernetes')">Enroll Now</button>
+        </div>
+
+        <div class="item-card">
+          <img src="images/docker.jpg" alt="Docker">
+          <p>Docker</p>
+          <div class="price">₹2,999</div>
+          <button onclick="openEnrollForm('Docker')">Enroll Now</button>
+        </div>
+
+        <div class="item-card">
+          <img src="images/terraform.jpg" alt="Terraform">
+          <p>Terraform</p>
+          <div class="price">₹1,999</div>
+          <button onclick="openEnrollForm('Terraform')">Enroll Now</button>
+        </div>
+
+        <div class="item-card">
+          <img src="images/ansible.jpg" alt="Ansible">
+          <p>Ansible</p>
+          <div class="price">₹1,999</div>
+          <button onclick="openEnrollForm('Ansible')">Enroll Now</button>
+        </div>
+
+        <div class="item-card">
+          <img src="images/python.jpg" alt="Python">
+          <p>Python</p>
+          <div class="price">₹9,999</div>
+          <button onclick="openEnrollForm('Python')">Enroll Now</button>
+        </div>
+      </div>
+
+      <a class="btn" href="index.html">Back</a>
+    </section>
+  </main>
+  
+  <footer>
+    <p>&copy; UshaSree Industries. All Rights Reserved.</p>
+  </footer>
+
+  <div id="enroll-modal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.6); z-index:1000;">
+    <div style="background:white; max-width:400px; margin:10% auto; padding:20px; border-radius:8px; position:relative;">
+      <h3 id="course-title">Enroll Now</h3>
+      <form onsubmit="submitEnrollment(event)">
+        <input type="text" id="enroll-name" placeholder="Full Name" required style="width:100%; margin-bottom:10px; padding:8px;">
+        <input type="email" id="enroll-email" placeholder="Email" required style="width:100%; margin-bottom:10px; padding:8px;">
+        <input type="hidden" id="enroll-course">
+        <button type="submit" style="width:100%;">Submit</button>
+      </form>
+      <button onclick="closeEnrollForm()" style="position:absolute; top:5px; right:10px; background:transparent; border:none; font-size:16px;">✖</button>
+    </div>
+  </div>
+
+  <script>
+    function openEnrollForm(course) {
+      document.getElementById('course-title').textContent = `Enroll in ${course}`;
+      document.getElementById('enroll-course').value = course;
+      document.getElementById('enroll-modal').style.display = 'block';
+    }
+
+    function closeEnrollForm() {
+      document.getElementById('enroll-modal').style.display = 'none';
+    }
+
+    function submitEnrollment(event) {
+      event.preventDefault();
+      const name = document.getElementById('enroll-name').value;
+      const email = document.getElementById('enroll-email').value;
+      const course = document.getElementById('enroll-course').value;
+
+      alert(`Thank you, ${name}! You have enrolled in ${course}. Confirmation sent to ${email}.`);
+      closeEnrollForm();
+    }
+  </script>
+</body>
+</html>
